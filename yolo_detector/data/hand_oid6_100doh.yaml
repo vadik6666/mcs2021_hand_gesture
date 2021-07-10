@@ -1,0 +1,11 @@
+# train and val data as 1) directory: path/images/, 2) file: path/images.txt, or 3) list: [path1/images/, path2/images/]
+
+train: ../data/oid6_hand_yolo_100doh/images/train/  # 113425 images ; 112009 annotation txts
+val: ../data/oid6_hand_yolo_100doh/images/val/  # 2075 images
+
+# number of classes
+nc: 1
+
+# class names
+names: [ 'hand' ]
+

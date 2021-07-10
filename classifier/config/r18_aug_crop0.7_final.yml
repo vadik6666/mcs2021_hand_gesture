@@ -1,0 +1,32 @@
+exp_name: 'r18_aug_crop0.7_final'
+outdir: './experiments/'
+
+cuda_id: '0'
+
+dataset:
+    train_annotation_main: './lists/hand_yolo_final/train.json'
+    val_annotation_main: './lists/hand_yolo_final/val.json'
+    seed: 123
+    num_of_classes: 7
+    input_size: 224
+    crop_size: 0.7 #!!!!!!!  1.1
+    batch_size: 48
+    augmentations: 'default'
+    augmentations_valid: 'default'
+    num_workers: 8
+
+model:
+    model_type: 'torchvision_resnet18'
+    drop_rate: 0.6
+
+train:
+    optimizer: 'SGD'
+    learning_rate: 0.002
+    momentum: 0.9
+    nesterov: false
+    weight_decay: 0.0001
+    lr_schedule: 'cosine'
+    n_epoch: 1 #5
+    label_smoothing: true
+    eps: 0.01
+    freq_vis: 50

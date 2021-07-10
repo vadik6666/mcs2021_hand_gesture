@@ -1,0 +1,12 @@
+data/oid6_hand_yolo_100doh
+data/train_data
+
+yolo_detector/__pycache__
+yolo_detector/runs
+yolo_detector/yolov5m6.pt
+
+classifier/experiments
+classifier/__pycache__
+
+submit/runs
+submit/checkpoints/*
