@@ -9,4 +9,4 @@ print('\n\ndownload MCS2021 dataset')
 os.system(f'wget -c {url}')
 
 print('\n\nunpacking dataset')
-os.system(f'unzip -qq train_data -d train_data')
+os.system(f'unzip -qq train_data.zip -d train_data')
