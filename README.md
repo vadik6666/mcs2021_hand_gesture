@@ -12,7 +12,7 @@ Work with preparing datasets will be inside `data` folder.
 cd data
 ```
 
-Run below script to download [MCS21 dataset (90GB)](https://boosters.pro/championship/machinescansee2021/data/) 
+Run below script to download [MCS21 dataset (82GB)](https://boosters.pro/championship/machinescansee2021/data/) and unpack to `data/train_data`. May take 1 hour. 
 ```
 python prepare_mcs21_data.py
 
