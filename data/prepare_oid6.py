@@ -8,8 +8,8 @@ SAVE_DIR = 'oid6_hand_yolo_100doh'
 target_cl = '/m/0k65p' # human hand
 #############
 
-I prepared image list by myself. It contains hands and small amount of not hands images (for background images)
-should be less than 1 hour
+# I prepared image list by myself. It contains hands and small amount of not hands images (for background images)
+# should be less than 1 hour
 print('\n\ndownload images given image list')
 for split in ['train', 'val']:
 	os.makedirs(f'{SAVE_DIR}/images/{split}', exist_ok=True)
