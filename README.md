@@ -1,19 +1,25 @@
 ## Start
 
-You need install some libraries like `torch`, `torchvision`, e.t.c.
+Install some libraries like `torch`, `torchvision`, e.t.c.
 ```
 pip install -r requirements.txt
 ```
 
 ## Data
 
-You will do work with dataset inside `data` folder.
+Work with preparing datasets will be inside `data` folder.
 ```
 cd data
 ```
 
-Download [MCS21 dataset (90GB)](https://boosters.pro/championship/machinescansee2021/data/train.zip) and put to `data/train_data/`
-so `data/train_data/` will contain 2853 folders (each folder is unique video_id)
+Run below script to download [MCS21 dataset (90GB)](https://boosters.pro/championship/machinescansee2021/data/) 
+```
+python prepare_mcs21_data.py
+
+```
+
+
+`data/train_data/` should contain 2853 folders (each folder is unique video_id)
 
 ```
 ├── data/train_data/
@@ -26,19 +32,19 @@ so `data/train_data/` will contain 2853 folders (each folder is unique video_id)
 │   │   │── frame_2.jpg
 ```
 
-Now run below scripts, it will automatically download and preprocess a subset of [OpenImages](https://storage.googleapis.com/openimages/web/download.html) dataset and full [100DOH dataset](http://fouheylab.eecs.umich.edu/~dandans/projects/100DOH/download.html). It may take 2-3 hours.
-Your data folder shuld be like this:
+Now run below scripts, they will automatically download and preprocess a subset of [OpenImages](https://storage.googleapis.com/openimages/web/download.html) dataset and full [100DOH dataset](http://fouheylab.eecs.umich.edu/~dandans/projects/100DOH/download.html). It may take 2-3 hours.
+
+```
+python prepare_oid6.py
+python 100doh_convert_annotation2yolo.py
+```
+
+Your data folder should look like this:
 ```
 ├── data/
 │   ├── train_data
 │   ├── oid6_hand_yolo_100doh
 ...
-```
-
-
-```
-python prepare_oid6.py
-python 100doh_convert_annotation2yolo.py
 ```
 
 ## Hand detector
@@ -51,7 +57,7 @@ python -m torch.distributed.launch --master_port 5216 --nproc_per_node 4 train.p
 
 ## Classication models
 
-Train three classifiers. Training on 1x1080Ti will take at least 10 mins per model.
+Train three classifiers. Training on 1x1080Ti will take at least 10 mins per model, 30 mins total.
 ```
 cd ../classifier
 python ./main.py --cfg ./config/r18_aug_crop0.7_final_antialias.yml
@@ -68,13 +74,13 @@ rsync -avr ./yolo_detector/runs ./submit/
 rsync -avr ./classifier/experiments/* ./submit/checkpoints/ 
 ```
 
-Make an archive of the submission
+Make an archive with submission
 ```
 cd submit
 zip -r mcs21_submit.zip *
 ```
 
-Submit now ready to upload to [boosters.pro](https://boosters.pro/championship/machinescansee2021/overview)
+Submit is now ready for uploading to [boosters.pro](https://boosters.pro/championship/machinescansee2021/overview)
 
 
 
