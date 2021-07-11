@@ -12,7 +12,7 @@ Work with preparing datasets will be inside `data` folder. 200Gb for data and mo
 cd data
 ```
 
-Run below script to download [MCS21 dataset (82GB)](https://boosters.pro/championship/machinescansee2021/data/) and unpack to `data/train_data`. May take 50-60 mins. 
+Run below script to download [MCS21 dataset (82GB)](https://boosters.pro/championship/machinescansee2021/data/) and unpack to `data/train_data`. May take 50 mins. 
 ```
 python prepare_mcs21_data.py
 
@@ -31,8 +31,9 @@ python prepare_mcs21_data.py
 │   │   │── frame_1.jpg
 │   │   │── frame_2.jpg
 ```
+You may delete archive with data by `rm -rf train_data.zip`.
 
-Now run below scripts, they will automatically download and preprocess a subset of [OpenImages](https://storage.googleapis.com/openimages/web/download.html) dataset and full [100DOH dataset](http://fouheylab.eecs.umich.edu/~dandans/projects/100DOH/download.html). It may take 2-3 hours.
+Now run below scripts, they will automatically download and preprocess a subset of [OpenImages](https://storage.googleapis.com/openimages/web/download.html) dataset and full [100DOH dataset](http://fouheylab.eecs.umich.edu/~dandans/projects/100DOH/download.html). It may take 1-3 hours.
 
 ```
 python prepare_oid6.py
@@ -46,6 +47,7 @@ Your data folder should look like this:
 │   ├── oid6_hand_yolo_100doh
 ...
 ```
+There are should be 113425 images in `data/oid6_hand_yolo_100doh/images/train`, 2075 images in `data/oid6_hand_yolo_100doh/images/val` and 112009 annotation files in `data/oid6_hand_yolo_100doh/labels/train`
 
 ## Hand detector
 
